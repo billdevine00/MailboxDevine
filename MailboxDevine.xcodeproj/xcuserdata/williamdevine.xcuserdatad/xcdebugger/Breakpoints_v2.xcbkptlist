@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MailboxDevine/ViewController.swift"
-            timestampString = "433579384.765438"
+            timestampString = "433732189.816046"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "ViewController"
             landmarkType = "3">
          </BreakpointContent>

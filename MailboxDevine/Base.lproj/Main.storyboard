@@ -12,6 +12,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1202"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="vwx-dA-Xho">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1202"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu" id="Vze-oa-aya">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="xdN-Y7-P26">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1202"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -29,7 +40,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feed" id="6cK-dC-RJW">
-                                        <rect key="frame" x="0.0" y="230" width="320" height="1202"/>
+                                        <rect key="frame" x="0.0" y="229" width="320" height="1202"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="YNe-qV-j6Q">
@@ -74,6 +85,10 @@
                                         <color key="backgroundColor" red="0.30618195046637775" green="1" blue="0.14595948918403601" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="oV7-4t-xYO" id="wpe-Uo-VgO"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -83,6 +98,7 @@
                     <connections>
                         <outlet property="archiveIcon" destination="jSy-vw-W3I" id="hdg-wM-eyI"/>
                         <outlet property="deleteIcon" destination="swd-Ty-hvk" id="h9E-rT-BJg"/>
+                        <outlet property="edgeGestureRecognizer" destination="oV7-4t-xYO" id="wTK-Lq-cnm"/>
                         <outlet property="feedImage" destination="6cK-dC-RJW" id="FPy-mt-PzP"/>
                         <outlet property="laterIcon" destination="yEx-dP-dCb" id="oiC-m4-2FT"/>
                         <outlet property="listIcon" destination="d0E-YX-GXV" id="3QY-Gu-LSx"/>
@@ -90,6 +106,7 @@
                         <outlet property="msgView" destination="7Jc-my-bSz" id="7Ua-2q-dR0"/>
                         <outlet property="scrollView" destination="xdN-Y7-P26" id="Boc-Oe-ntt"/>
                         <segue destination="W81-NZ-HUL" kind="modal" identifier="rescheduleSegue" id="DA2-z9-LTt"/>
+                        <segue destination="uk8-q5-eX5" kind="modal" identifier="listSegue" id="MGh-jh-lXy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -98,8 +115,41 @@
                         <action selector="onPanGesture:" destination="vXZ-lx-hvc" id="YZX-ru-SbU"/>
                     </connections>
                 </panGestureRecognizer>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="oV7-4t-xYO">
+                    <rectEdge key="edges" left="YES"/>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="162" y="359"/>
+        </scene>
+        <!--List View Controller-->
+        <scene sceneID="W0s-6W-uOz">
+            <objects>
+                <viewController id="uk8-q5-eX5" customClass="listViewController" customModule="MailboxDevine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="naK-K1-aye">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list" id="OPI-OO-ZI4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Dh-If-rJ3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTap:" destination="uk8-q5-eX5" eventType="touchUpInside" id="bre-mr-3vB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YBx-kD-9cH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="559" y="768"/>
         </scene>
         <!--Reschedule View Controller-->
         <scene sceneID="wmL-zL-e5O">
@@ -138,8 +188,10 @@
         <image name="feed" width="320" height="1202"/>
         <image name="help_label" width="320" height="37"/>
         <image name="later_icon" width="25" height="25"/>
+        <image name="list" width="320" height="568"/>
         <image name="list_icon" width="25" height="25"/>
         <image name="mail_nav_icon" width="25" height="20"/>
+        <image name="menu" width="320" height="568"/>
         <image name="message" width="320" height="86"/>
         <image name="nav" width="320" height="65"/>
         <image name="reschedule" width="320" height="568"/>
