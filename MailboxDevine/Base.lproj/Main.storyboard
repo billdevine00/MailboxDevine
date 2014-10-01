@@ -30,6 +30,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav" id="9xQ-Ve-ce7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" id="AYC-KX-HnP">
                                         <rect key="frame" x="0.0" y="102" width="320" height="42"/>
@@ -78,108 +79,68 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <gestureRecognizers/>
                                                 <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="7j5-Sv-QJc" appends="YES" id="KM9-fJ-QKf"/>
+                                                    <outletCollection property="gestureRecognizers" destination="xim-e7-0QN" appends="YES" id="O70-pQ-Dr5"/>
                                                 </connections>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.30618195046637775" green="1" blue="0.14595948918403601" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list" id="OPI-OO-ZI4">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="m1N-3A-HCz" appends="YES" id="3Yo-71-Xnp"/>
+                                        </connections>
+                                    </imageView>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reschedule" id="z23-y3-5hb">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="ETo-mI-Lhl" appends="YES" id="xKi-iD-NjF"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outlet property="delegate" destination="oV7-4t-xYO" id="wpe-Uo-VgO"/>
-                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="1202"/>
                     <connections>
                         <outlet property="archiveIcon" destination="jSy-vw-W3I" id="hdg-wM-eyI"/>
                         <outlet property="deleteIcon" destination="swd-Ty-hvk" id="h9E-rT-BJg"/>
-                        <outlet property="edgeGestureRecognizer" destination="oV7-4t-xYO" id="wTK-Lq-cnm"/>
                         <outlet property="feedImage" destination="6cK-dC-RJW" id="FPy-mt-PzP"/>
                         <outlet property="laterIcon" destination="yEx-dP-dCb" id="oiC-m4-2FT"/>
                         <outlet property="listIcon" destination="d0E-YX-GXV" id="3QY-Gu-LSx"/>
+                        <outlet property="listImage" destination="OPI-OO-ZI4" id="Fzd-ab-NXl"/>
                         <outlet property="messageImageView" destination="ls6-zU-JOi" id="UbT-qw-uMa"/>
                         <outlet property="msgView" destination="7Jc-my-bSz" id="7Ua-2q-dR0"/>
+                        <outlet property="rescheduleImage" destination="z23-y3-5hb" id="QyF-fm-LT9"/>
                         <outlet property="scrollView" destination="xdN-Y7-P26" id="Boc-Oe-ntt"/>
-                        <segue destination="W81-NZ-HUL" kind="modal" identifier="rescheduleSegue" id="DA2-z9-LTt"/>
-                        <segue destination="uk8-q5-eX5" kind="modal" identifier="listSegue" id="MGh-jh-lXy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="7j5-Sv-QJc">
+                <tapGestureRecognizer id="ETo-mI-Lhl" userLabel="Tap Reschedule">
                     <connections>
-                        <action selector="onPanGesture:" destination="vXZ-lx-hvc" id="YZX-ru-SbU"/>
+                        <action selector="onRescheduleTap:" destination="vXZ-lx-hvc" id="OoM-eA-KZl"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="m1N-3A-HCz" userLabel="Tap List">
+                    <connections>
+                        <action selector="onListTap:" destination="vXZ-lx-hvc" id="JSa-lt-F1H"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="xim-e7-0QN">
+                    <connections>
+                        <action selector="onPanGesture:" destination="vXZ-lx-hvc" id="68Y-Lg-xSd"/>
                     </connections>
                 </panGestureRecognizer>
-                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="oV7-4t-xYO">
-                    <rectEdge key="edges" left="YES"/>
-                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="162" y="359"/>
-        </scene>
-        <!--List View Controller-->
-        <scene sceneID="W0s-6W-uOz">
-            <objects>
-                <viewController id="uk8-q5-eX5" customClass="listViewController" customModule="MailboxDevine" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="naK-K1-aye">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list" id="OPI-OO-ZI4">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Dh-If-rJ3">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onTap:" destination="uk8-q5-eX5" eventType="touchUpInside" id="bre-mr-3vB"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YBx-kD-9cH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="559" y="768"/>
-        </scene>
-        <!--Reschedule View Controller-->
-        <scene sceneID="wmL-zL-e5O">
-            <objects>
-                <viewController id="W81-NZ-HUL" customClass="RescheduleViewController" customModule="MailboxDevine" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DfW-sN-1O8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reschedule" id="8it-pu-NZe">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tiK-Gl-CQR">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onTap:" destination="W81-NZ-HUL" eventType="touchUpInside" id="vm2-UT-xb5"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JaI-9N-djF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="552" y="42"/>
         </scene>
     </scenes>
     <resources>

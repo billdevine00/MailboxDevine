@@ -19,7 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var listIcon: UIImageView!
     @IBOutlet weak var feedImage: UIImageView!
     @IBOutlet var edgeGestureRecognizer: UIScreenEdgePanGestureRecognizer!
-
+    @IBOutlet weak var rescheduleImage: UIImageView!
+    @IBOutlet weak var listImage: UIImageView!
+    
     var imageCenter: CGPoint!
 
     override func viewDidLoad() {
@@ -31,6 +33,8 @@ class ViewController: UIViewController {
         deleteIcon.alpha = 0
         archiveIcon.alpha = 0
         listIcon.alpha = 0
+        rescheduleImage.alpha = 0
+        listImage.alpha = 0
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -110,51 +114,92 @@ class ViewController: UIViewController {
             msgView.backgroundColor = UIColor.grayColor()
             
             UIView.animateWithDuration(0.2, animations: {() -> Void in
+ // Green Show
                 
-                
-                if self.messageImageView.center.x >= 220 && self.messageImageView.center.x <= 319 {
-                    println("center ended is between 220 and 319")
-                    self.messageImageView.center.x = 640
-                    self.msgView.backgroundColor = UIColor.greenColor()
-                    self.msgView.alpha = 0
-                    self.feedImage.frame.origin.y = 144
-                    self.scrollView.contentSize = CGSizeMake(320,1994)
-                }
-                
-                if self.messageImageView.center.x >= 320  {
+                if velocity.x > 0 && self.messageImageView.center.x >= 220 && self.messageImageView.center.x <= 319
+                    { UIView.animateWithDuration(0.2, animations: { () -> Void in
+                            println("center ended is between 220 and 319")
+                            self.messageImageView.center.x = 640
+                            self.msgView.backgroundColor = UIColor.greenColor()
+                            self.msgView.alpha = 0
+                            self.feedImage.frame.origin.y = 144
+                            self.scrollView.contentSize = CGSizeMake(320,1994)
+                            
+                            }, completion: { (Bool) -> Void in
+                               
+                        })
+ // Red Show
+                } else if velocity.x > 0 && self.messageImageView.center.x >= 320
+                    
+                    { UIView.animateWithDuration(0.2, animations: { () -> Void in
                     println("center ended is past 320")
                     self.messageImageView.center.x = 640
                     self.msgView.backgroundColor = UIColor.redColor()
+                    
+                }, completion: { (Bool) -> Void in
                     self.msgView.alpha = 0
                     self.feedImage.frame.origin.y = 144
                     self.scrollView.contentSize = CGSizeMake(320,1994)
-
+                })
+// Yellow show
+                } else if velocity.x < 0 && self.messageImageView.center.x <= 100 && self.messageImageView.center.x >= 1
+                { UIView.animateWithDuration(0.2, animations: { () -> Void in
+                println("center ended is less than 101 greater than 1")
+                self.msgView.backgroundColor = UIColor.yellowColor()
+                self.messageImageView.center.x = -160
                     
-                }
+                }, completion: { (finished:Bool) -> Void in
+                    UIView.animateWithDuration(0.2, animations: { () -> Void in
+                        self.rescheduleImage.alpha = 1
+                        self.msgView.alpha = 0
+                        self.feedImage.frame.origin.y = 144
+                        self.scrollView.contentSize = CGSizeMake(320,1994)
+                    })
+                   
+                })
+                    // Brown Show
 
-                if self.messageImageView.center.x <= 100 && self.messageImageView.center.x >= 1  {
-                    println("center ended is less than 101 greater than 1")
-
-                      self.performSegueWithIdentifier("rescheduleSegue", sender: self)
-                    self.msgView.backgroundColor = UIColor.yellowColor()
-                    self.messageImageView.center.x = 160
-
-                }
+                } else if velocity.x < 0 && self.messageImageView.center.x <= 101     { UIView.animateWithDuration(0.2, animations: { () -> Void in
+                self.msgView.backgroundColor = UIColor.brownColor()
+                self.messageImageView.center.x = -160
+                self.msgView.alpha = 0
+                self.listImage.alpha = 1
                 
-                if self.messageImageView.center.x <= 101   {
-                    println("center ended is less than 100")
-                    self.performSegueWithIdentifier("listSegue", sender: self)
-                    self.messageImageView.center.x = 160
-                    
-                }
-                    if self.messageImageView.center.x <= 219 {
-                    println("center ended is between 220 and 319")
+                self.feedImage.frame.origin.y = 144
+                self.scrollView.contentSize = CGSizeMake(320,1994)
+                }, completion: { (Bool) -> Void in
+                
+                })
+                
+                } else {
+                    self.msgView.backgroundColor = UIColor.grayColor()
                     self.messageImageView.center.x = 160
                         
                 }
                 
-                
                 })
     }
 }
+    
+    @IBAction func onListTap(sender: AnyObject) {
+        println("dismissing list image")
+        listImage.alpha = 0
+        self.msgView.alpha = 1
+        self.feedImage.alpha = 1
+        self.messageImageView.center.x = 160
+
+
+    }
+    
+    @IBAction func onRescheduleTap(sender: AnyObject) {
+        rescheduleImage.alpha = 0
+        self.msgView.alpha = 1
+        self.feedImage.alpha = 1
+        self.messageImageView.center.x = 160
+        
+    }
+    
+   
+        
+ 
 }
